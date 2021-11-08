@@ -1,24 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import Main from "./components/main/main";
+import Queue from "./components/queue";
+import Explore from "./components/explore"
+import ThemeEx from "./components/experiments/themeEx"  
+import GridTrial from "./components/experiments/gridTrial"
+import Author from "./components/author"
+import {BrowserRouter as Router , Switch , Route} from "react-router-dom";
+import CardForm from "./components/forms/cardForm";
+import AuthorForm from "./components/forms/authorForm";
 
-function App() {
+
+let App = (props) => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>  
+      <Router> 
+        <Navbar/>     {/* header will always show up ,the body keeps changing acc to route */}
+      
+        <Switch>      
+
+          <Route exact path="/"> 
+            <Main/>  
+          </Route>
+
+          <Route exact path="/queue"> 
+            <Queue/> 
+          </Route> 
+
+          <Route exact path="/explore"> 
+            <Explore/> 
+          </Route>
+
+          <Route exact path="/author"> 
+            <Author/> 
+          </Route> 
+
+          <Route exact path="/authorForm"> 
+            <AuthorForm/> 
+          </Route> 
+
+          <Route exact path="/cardForm"> 
+            <CardForm/> 
+          </Route> 
+
+
+          
+        </Switch>
+      </Router>
+
+
+      {/* <ThemeEx/>
+      <GridTrial/> */}
+
+      </>
   );
 }
 
