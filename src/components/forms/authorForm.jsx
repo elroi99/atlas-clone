@@ -3,44 +3,37 @@ import {useState} from "react";
 import { useEffect } from "react";
 const axios = require("axios");
 
-
-// messing around trying to learn how to use json server
-// just messing around
-
-
+// messing around trying to learn how to use json placeholder
 
 const AuthorForm = () => {
 
-  // let [ stats , changeStats ] = useState();
-  let stats = [ { Country : "world" , deaths : "waiting for stats"}];
-  useEffect( async () => {
-    try{
-      let response = await axios.get("https://api.covid19api.com/summary");
-      // changeStats(data);  // put the data returned by the api in the state
-      let countries = response.data.Countries;  // an arr of objects. each object is a country
-      // changeStats(countries);
-      stats = countries;
-      console.log(countries[0]);
-      // countries.forEach( (country) => { console.log(country.Country)} )
-    }
-    catch(error){
-      console.log(error);
-    }
-  } , [] )
+  let stats = null;
+  // let [ stats , changeStats ] = useState(null);
+  // useEffect( async () => {
+  //   try{
+  //     let response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+  //     // changeStats(response);  // put the data returned by the api in the state 
+  //     console.log(response); // an arr of objects 
+
+  //   }
+  //   catch(error){
+  //     console.log(error);
+  //   }
+  // } , [] )
 
 
     return(
       <>
-      { stats.map( (country) => { return(
-            <CountryCard countryName={country.Country} deaths={country.TotalDeaths}  /> ) } )  } 
+      { stats && stats.map( (item) => { 
+            return <CountryCard title={item.title}  />  } )  } 
       </>
     )
 }
 
 const CountryCard = (props) => {
   return (<>
-    <h4> {props.countryName} </h4>
-    <p> total deaths : {props.deaths} </p>
+    <h4> {props.title} </h4>
+    {/* <p> total deaths : {props.deaths} </p> */}
     </>
   )
 }

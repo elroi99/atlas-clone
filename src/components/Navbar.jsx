@@ -9,8 +9,18 @@ import { Link} from "react-router-dom"
 import Author from "./author"
 import CardForm from "./forms/cardForm";
 import AuthorForm from "./forms/authorForm";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LoginIcon from '@mui/icons-material/Login';
+import IconButton from '@material-ui/core/IconButton';
+import { useState } from "react";
 
 let Navbar = (props) => {
+
+  const [ loginState , changeLoginState] = useState(false);
+
+  let handleLoginClick = () => {
+    ( loginState === false ) ? changeLoginState(true) : changeLoginState(false)
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -18,7 +28,7 @@ let Navbar = (props) => {
 
         <Toolbar sx={{display : "flex" , justifyContent : "center", height : "100%" , disableGutters : 'true'}}>
 
-          <Stack direction="row" justifyContent="center" spacing={15} sx={{ height : "100%" }} > 
+          <Stack direction="row" justifyContent="center" spacing={10} sx={{ height : "100%" }} > 
             
               <Typography variant="h6" component="div" sx={ { flexGrow : "1"  }}  >
                 <Link to="/" style={{ textDecoration : "none" , color : "#b5b3ac" , "&:hover" : { color : "#5b68d8"}}}>
@@ -58,6 +68,13 @@ let Navbar = (props) => {
                       CardForm
                     </Link>
             </Typography>
+
+            {/* this iconbutton is pushing the topbar links for some reason */}
+            <IconButton onClick ={ handleLoginClick } sx ={{ position : "relative" , bottom : "20px"}}> 
+              { loginState === true ? <AccountCircleIcon/> : <LoginIcon/> }
+            </IconButton>
+
+            
           </Stack>
 
         </Toolbar>

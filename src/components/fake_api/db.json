@@ -1,0 +1,20 @@
+{ 
+  "cards" :
+  [
+    {
+      "title" : "21 Awesome Takeaways from Atomic 21 Awesome Takeaways from Atomic 21 ",
+      "body" : "Today, people have to work too hard to find what they want online, sifting through and steering clear of content, clutter and click-bait not worthy of their time. Over time, navigation on the internet has become increasingly centralized and optimized for clicks and scrolling, not for getting people to where they want to go or what they are looking for quickly.",
+      "tags" : [ "business" , "cars" , "self help" , "business" ]
+    },
+    {
+      "title" : "Challenger Universities pt. 3a: The challenger university landscape",
+      "body" : "Challenger Universities pt. 3a: The challenger university landscape",
+      "tags" : [ "education" , "work" , "future of work" , "business" ]
+    },
+    {
+      "title" : "Poland Sold Shoulder-Fired Anti-Aircraft Missiles With Coded Locks To Prevent Unauthorized Use",
+      "body" : "olish state-owned defense contractor Mesko offers, or at least offered, a system designed to prevent unauthorized use of its Grom shoulder-fired heat-seeking surface-to-air missiles, according to a recently released report. This would appear to be the first confirmed instance of an end-use control system being fitted to a weapon of this kind, ",
+      "tags" : [ "war" , "terror" , "safety" , "business" ]
+    }
+  ] 
+}
