@@ -30,15 +30,13 @@ const LeftEx = (props) => {
 
                 <Stack sx={{overflowY : "scroll" , pl : 0.5 , pt : 1}}>
 
+                    { arr.map( (topic) => { return ( 
                         <Box sx={{ display : "flex" , flexDirection : "row"}}> 
-                            <KeyboardArrowRightIcon sx={{ position : "relative" , top : "2px"}}/> 
-                            <Link href="#" underline="none" sx={{ mr : "auto" , color : "gray" , "&:hover": {  cursor : "pointer" , color : "blue"} }}>Crypto</Link> 
-                        </Box> 
-                    
-                        <Box sx={{ display : "flex" , flexDirection : "row"}}> 
-                            <KeyboardArrowRightIcon sx={{ position : "relative" , top : "2px"}}/> 
-                            <Link href="#" underline="none" sx={{ mr : "auto" , color : "gray" , "&:hover": {  cursor : "pointer" , color : "blue"} }}>Crypto</Link> 
-                        </Box> 
+                        <KeyboardArrowRightIcon sx={{ position : "relative" , top : "2px"}}/> 
+                        <Link href="#" underline="none" sx={{ mr : "auto" , color : "gray" , "&:hover": {  cursor : "pointer" , color : "blue"} }}>{topic}</Link> 
+                    </Box> 
+                    )}) }
+
                 </Stack>
 
             </Box> 

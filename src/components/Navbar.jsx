@@ -6,9 +6,9 @@ import Typography from '@mui/material/Typography';
 import Stack from "@mui/material/Stack"
 import Chip from "@mui/material/Chip"
 import { Link} from "react-router-dom"
-import Author from "./author"
+import Author from "../Pages/author"
 import CardForm from "./forms/cardForm";
-import AuthorForm from "./forms/authorForm";
+import AuthorForm from "./forms/demoPage";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
 import IconButton from '@material-ui/core/IconButton';
@@ -24,7 +24,7 @@ let Navbar = (props) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed"  sx={{ backgroundColor : "#FFFFFF" , textColor : "black" , padding : "0px" }}>
+      <AppBar position="fixed" elevation={0}  sx={{ backgroundColor : "#FFFFFF" , textColor : "black" , padding : "0px" ,   }}>
 
         <Toolbar sx={{display : "flex" , justifyContent : "center", height : "100%" , disableGutters : 'true'}}>
 
@@ -58,8 +58,8 @@ let Navbar = (props) => {
             </Typography>
 
             <Typography variant="h6" component="div" sx={{ flexGrow : "1" }}>
-                    <Link to="/authorForm" style={{ textDecoration : "none" , color : "#b5b3ac" , "&:hover" : { color : "#5b68d8"} }} > 
-                      AuthorForm
+                    <Link to="/demoPage" style={{ textDecoration : "none" , color : "#b5b3ac" , "&:hover" : { color : "#5b68d8"} }} > 
+                      Demo Page
                     </Link>
             </Typography>
 
