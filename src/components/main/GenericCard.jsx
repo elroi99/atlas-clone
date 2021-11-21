@@ -16,13 +16,13 @@ import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
  
 
-// The generic card has 2 modes. details card and queue card . they can be toggled by changing the cardType prop. by default, the card will be configured as a queue card ie. this variant has a "Process" button. no need to pass any prop to use this card 
+// The generic card has 2 modes. "details" card and "queue" card . they can be toggled by changing the cardType prop. by default, the card will be configured as a queue card ie. this variant has a "Process" button. no need to pass any prop to use this card 
 // If however, you want a details card. ie. small variation. ie. Process btn is replaced with 2 buttons. 1. edit 2. delete. if you want this, pass in the cardType prop with value "details". while using the card. 
 
 
 const GenericCard = (props) => {
 
-    let { cardType }  = props;
+    let { cardType = "queue" }  = props;    // destructuring the props.
 
     const styles = {
         // first way of writing styles ie. create a set of k-v pairs in an object , then use them in 
@@ -123,11 +123,19 @@ const GenericCard = (props) => {
                         
                         { cardType === "details" ?
                             (<Box display="flex" gap={1} flex="0 0 max-content"> 
-                                <ModeEditOutlinedIcon sx={{ fontSize:"1rem", position : "relative" , top : "3px" , "&:hover": {  cursor : "pointer" , color : "blue" } }} /> 
-                                <DeleteForeverOutlinedIcon sx={{ fontSize:"1rem" , position : "relative" , top : "3px",  "&:hover": {  cursor : "pointer" , color : "blue"}} }/>
+                                <ModeEditOutlinedIcon 
+                                sx={{ fontSize:"1rem", position : "relative" , top : "3px" , "&:hover": {  cursor : "pointer" , color : "blue" } }}
+                                onClick = {""} /> 
+                                <DeleteForeverOutlinedIcon 
+                                sx={{ fontSize:"1rem" , position : "relative" , top : "3px",  "&:hover": {  cursor : "pointer" , color : "blue"}} }
+                                onClick = {""} />
                             </Box>) 
                                 : 
-                            <Button variant="outlined"  sx ={{ ml : 1 , padding : 2 , color : "black" , maxWidth : "300px" }} > Process </Button>
+                            <Button 
+                            variant="outlined"  sx ={{ ml : 1 , padding : 2 , color : "black" , maxWidth : "300px" }} 
+                            onClick = { ""}> 
+                                Process 
+                            </Button>
                         }
 
                     </Box>

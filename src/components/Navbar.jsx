@@ -8,7 +8,7 @@ import Chip from "@mui/material/Chip"
 import { Link} from "react-router-dom"
 import Author from "../Pages/author"
 import CardForm from "./forms/cardForm";
-import AuthorForm from "./forms/demoPage";
+import AuthorForm from "./forms/Forms";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
 import IconButton from '@material-ui/core/IconButton';

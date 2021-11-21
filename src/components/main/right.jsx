@@ -15,8 +15,10 @@ import Button from "@mui/material/Button"
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import GenericCard from "./GenericCard"
+
+// cardType refers to the modes of the genericCard ( different modes have different UI) check the GenericCard component for details on the different available modes for Generic Card.
  
-const Right = (props) => {
+const Right = ({ cardType}) => {
 
     return ( 
     <>
@@ -30,7 +32,6 @@ const Right = (props) => {
         <Box > 
 
         <GenericCard variant="outlined" sx={{ width: "100%", height :"150px" }} cardType="details" />
-
 
 
         </Box>

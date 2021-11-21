@@ -42,11 +42,11 @@ const UserBioForm = ({handleDrawerClose}) => {
         <Box sx={{ padding : "0 1rem 0 1rem"}}>
             <Box sx={{ height : "2rem"}}> <CloseIcon onClick={ handleDrawerClose } sx={{ display : "block" , marginLeft : "auto"}} /> </Box>
             <Box className="formBox" component="form" sx={{ display : "grid" , gap : "1rem" , gridTemplateColumns : "1fr 1fr" , width : "450px"  }}>
-                <TextField id="outlined-basic" label="First name" variant="outlined" placeholder="" name="firstName" onChange={handleChange} />
-                <TextField id="outlined-basic" label="Last name" variant="outlined" placeholder="" name="lastName" onChange={handleChange} />
-                <TextField id="outlined-basic" label="Email" variant="outlined" placeholder="" name="email" onChange={handleChange} />
-                <TextField id="outlined-basic" label="User name" variant="outlined" placeholder="" name="userName" onChange={handleChange} />
-                <TextField id="outlined-textarea" label="Bio" variant="outlined" placeholder="" name="bio" onChange={handleChange}/>
+                <TextField id="outlined-basic" label="Name" variant="outlined" placeholder="" name="name " onChange={handleChange} />
+                <TextField id="outlined-basic" label="Avatar" variant="outlined" placeholder="" name="avatar" onChange={handleChange} />
+                <TextField id="outlined-basic" label="About" variant="outlined" placeholder="" name="about" onChange={handleChange} />
+                <TextField id="outlined-textarea" label="Website" variant="outlined" placeholder="" name="website" onChange={handleChange}/>
+                <TextField id="outlined-textarea" label="Twitter" variant="outlined" placeholder="" name="twitterLink" onChange={handleChange}/>
 
                 {/* upload avatar btn */}
                 <Box sx={{ width : "100%" , height : "100%" , gridColumnStart : "1" , gridRowStart : "4"}}>
@@ -80,13 +80,13 @@ const UserBioForm = ({handleDrawerClose}) => {
                     variant="contained"
                     name = "coverImage"
                     >
-                    Upload Cover Image
+                    Upload Background Image
                     </Button>
                 </Box>
 
 
 
-                <Button variant="contained" type="submit" sx={{ gridRowStart : "5"}} onClick={handleSubmitBtnClick} > Save  </Button>  
+                <Button variant="contained" type="submit" sx={{ gridRowStart : "5"}} onClick={handleSubmitBtnClick} > Save </Button>  
 
 
             </Box> 

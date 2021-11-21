@@ -3,6 +3,7 @@ body{
     padding : 0px;
     position: relative;
     top: 56px;
+    overflow-x : hidden;
 }
 
 .ContentCard:hover{
