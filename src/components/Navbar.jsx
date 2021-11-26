@@ -11,16 +11,26 @@ import CardForm from "./forms/cardForm";
 import AuthorForm from "./forms/Forms";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from '@mui/material/IconButton';
 import { useState } from "react";
+import Landing from "../Pages/landing";
+import { signout , auth } from "../firebase/firebase";
+import { authContext }  from "../contexts/authContext";
+import { useContext } from "react";
+import { onAuthStateChanged } from "firebase/auth";
 
 let Navbar = (props) => {
+  // my understanding, if this component has rendered, it means that the user is logged in..... thus i've set the default 
+  // loginState to true. when the user clicks the logout button, I will redirect out to the landing page. ie. logged out. 
 
-  const [ loginState , changeLoginState] = useState(false);
+  const [ loginState , changeLoginState] = useState(true);
 
   let handleLoginClick = () => {
-    ( loginState === false ) ? changeLoginState(true) : changeLoginState(false)
+    ( loginState === false ) ? changeLoginState(true) :  changeLoginState(false);
+    // console.log("Signed out using navbar");
+    // signout(); 
   }
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -57,15 +67,15 @@ let Navbar = (props) => {
                     </Link>
             </Typography>
 
-            <Typography variant="h6" component="div" sx={{ flexGrow : "1" }}>
+            {/* <Typography variant="h6" component="div" sx={{ flexGrow : "1" }}>
                     <Link to="/demoPage" style={{ textDecoration : "none" , color : "#b5b3ac" , "&:hover" : { color : "#5b68d8"} }} > 
                       Demo Page
                     </Link>
-            </Typography>
+            </Typography> */}
 
             <Typography variant="h6" component="div" sx={{ flexGrow : "1" }}>
-                    <Link to="/cardForm" style={{ textDecoration : "none" , color : "#b5b3ac" , "&:hover" : { color : "#5b68d8"} }} > 
-                      CardForm
+                    <Link to="/" style={{ textDecoration : "none" , color : "#b5b3ac" , "&:hover" : { color : "#5b68d8"} }} > 
+                      Landing
                     </Link>
             </Typography>
 

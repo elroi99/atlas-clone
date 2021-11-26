@@ -14,6 +14,9 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import Button from "@mui/material/Button"
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import Forms from "../forms/Forms.jsx"
+import { useState } from "react";
+import { formTriggers } from "../forms/Forms.jsx"
  
 
 // The generic card has 2 modes. "details" card and "queue" card . they can be toggled by changing the cardType prop. by default, the card will be configured as a queue card ie. this variant has a "Process" button. no need to pass any prop to use this card 
@@ -22,7 +25,13 @@ import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined
 
 const GenericCard = (props) => {
 
-    let { cardType = "queue" }  = props;    // destructuring the props.
+    let { cardType = "queue" }  = props;    // destructuring the props and assigning a key a default value. 
+    
+    let [ formProps , setFormProps] = useState();
+    let { editAuthorProfile , deleteCard , addCard , editCard } = formTriggers;     // destructuring all the available triggers.
+    let resetFormProps = () => {
+        setFormProps( );
+      }
 
     const styles = {
         // first way of writing styles ie. create a set of k-v pairs in an object , then use them in 
@@ -95,7 +104,14 @@ const GenericCard = (props) => {
                         <Grid item><Chip size="small"  icon={<LibraryBooksIcon />} label="Post" /> </Grid>
                         <Grid item> <Typography className="cardTitle" noWrap="false" sx={ styles.cardTitle }> 21 Awesome Takeaways from Atomic 21 Awesome Takeaways from Atomic 21 </Typography></Grid>
                     </Grid>
-                    <Grid item className="expandArrow"  xs={1} sx={styles.expandArrow} > <IconButton className="expandArrowIconButton" sx={{  "&:hover" : { color : "blue"}}}> <KeyboardArrowDownIcon/> </IconButton> </Grid>
+                    <Grid item className="expandArrow"  xs={1} sx={styles.expandArrow} >
+                         <IconButton 
+                         className="expandArrowIconButton" 
+                         sx={{  "&:hover" : { color : "blue"}}}
+                         onClick = { " "}> 
+                            <KeyboardArrowDownIcon/> 
+                         </IconButton> 
+                    </Grid>
                 </Grid>
 
                 <Box className = "previewContainer" > 
@@ -125,15 +141,15 @@ const GenericCard = (props) => {
                             (<Box display="flex" gap={1} flex="0 0 max-content"> 
                                 <ModeEditOutlinedIcon 
                                 sx={{ fontSize:"1rem", position : "relative" , top : "3px" , "&:hover": {  cursor : "pointer" , color : "blue" } }}
-                                onClick = {""} /> 
+                                onClick = { () => { editCard( formProps , setFormProps ) } } /> 
                                 <DeleteForeverOutlinedIcon 
                                 sx={{ fontSize:"1rem" , position : "relative" , top : "3px",  "&:hover": {  cursor : "pointer" , color : "blue"}} }
-                                onClick = {""} />
+                                onClick = { () => { deleteCard( formProps , setFormProps) } } />
                             </Box>) 
                                 : 
                             <Button 
                             variant="outlined"  sx ={{ ml : 1 , padding : 2 , color : "black" , maxWidth : "300px" }} 
-                            onClick = { ""}> 
+                            onClick = { () => {addCard( formProps , setFormProps ) } }> 
                                 Process 
                             </Button>
                         }
@@ -142,6 +158,8 @@ const GenericCard = (props) => {
                 </Box>
 
             </Card>  
+
+            { formProps &&  <Forms { ...formProps } setFormProps = {setFormProps} resetFormProps = { resetFormProps} /> }
         </> 
     );
 }

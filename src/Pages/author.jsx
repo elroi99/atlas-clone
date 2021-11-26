@@ -14,53 +14,25 @@ import AddIcon from '@mui/icons-material/Add';
 import Button from "@mui/material/Button";
 import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
-import  Forms  from "../components/forms/Forms"
 import Image from "../assets/author-background.jpg"
+import Forms from "../components/forms/Forms.jsx"
 import { useState } from "react";
-import { useContext} from "react";
-import { formsTriggersContext } from "../components/forms/FormTriggerContextProvider";
-
+import { formTriggers} from "../components/forms/Forms";
+import Navbar from "../components/Navbar"
 
 let  Author = (props) => {
 
 // formType options -- cardForm , cardFormEdit , userBioForm , userBioFormEdit , authorBioForm , confirmDelete ,  (choses the form to be displayed within the drawer)
 
-let [formProps , setFormProps] = useState();
-
+let [ formProps , setFormProps] = useState();
+let { editAuthorProfile , deleteCard , addCard , editCard } = formTriggers;     // destructuring all the available triggers.
 let resetFormProps = () => {
     setFormProps( );
   }
 
-// since there are all form actions, ie. the Form component will always have them wherewer we use it, should I just 
-// put them inside a FormContext ? I will just import the context here and destructure these out into this file. 
-// will be able to use at the onclicks etc then. 
-// the state will live in this file itself, the functions the change it will be provided through the context
-    // let editAuthorProfile = () => {
-    //     setFormProps({ ...formProps , formType : "authorBioForm"})
-    // }
-
-    // let deleteCard = () => {
-    //     setFormProps({ ...formProps , formType : "confirmDelete"})
-    // }
-
-    // let addCard = () => {
-    //     setFormProps({ ...formProps , formType : "cardForm"})
-    // }
-
-    // let editCard = () => {
-    //     setFormProps( { ...formProps , formType : "cardFormEdit"})
-    // }
-
-    // provide this function to the Form function. it will be triggered when the form closes. 
-    // this resets the formProps to blank. this function ensures that the form will open more than once without reloading the page. 
-    // let resetFormProps = () => {
-    //     setFormProps( );
-    // }
-    console.log(formsTriggersContext);
-    let { addCard , editAuthorProfile } = useContext(formsTriggersContext);
-
     return (
         <> 
+            <Navbar/>
             <CssBaseline />
             <Box sx={{  background: "#e96443" , 
                         background: "-webkit-linear-gradient(to bottom, #904e95, #e96443)",

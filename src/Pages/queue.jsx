@@ -17,7 +17,7 @@ import Button from "@mui/material/Button";
 import { createTheme } from "@mui/material/styles"
 import ButtonBase from "@mui/material/ButtonBase"
 import GenericCard from "../components/main/GenericCard";
-
+import Navbar from "../components/Navbar"
 
 
 
@@ -29,6 +29,7 @@ const Queue = (props) => {
 
     return (
         <>
+        <Navbar/>
         <CssBaseline/>
         <Box sx={{    background: "#e96443" , 
                         background: "-webkit-linear-gradient(to bottom, #904e95, #e96443)",

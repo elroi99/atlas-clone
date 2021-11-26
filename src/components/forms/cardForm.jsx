@@ -1,14 +1,13 @@
 import Box from "@mui/material/Box"
-import React, { useState } from "react";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { useState } from "react";
+import { TextField } from "@mui/material/";
+import Button from '@mui/material/Button';
 import ClearIcon from '@mui/icons-material/Clear';
 import Paper from "@mui/material/Paper"
-import { Typography } from "@material-ui/core";
-import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import {useEffect} from "react";
+import { useEffect } from "react";
+
 
 // cardForm is a single form with multiple parts. the parts are called first,second,acknowlegement.
 // i have used the controlled components approach. and split the form into 4 parts cardForm , first,second,acknowlegement.

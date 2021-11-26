@@ -8,11 +8,12 @@ import Icon from "@mui/material/Icon"
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import Avatar from "@mui/material/Avatar";
 import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
-
+import Navbar from "../components/Navbar"
 
 const Explore = () => {
     return (
         <> 
+            <Navbar/>
             <CssBaseline/> 
             <Box sx={{      background: "#e96443" , 
                             background: "-webkit-linear-gradient(to bottom, #904e95, #e96443)",

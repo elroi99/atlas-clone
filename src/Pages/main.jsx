@@ -14,15 +14,22 @@ import AddIcon from '@mui/icons-material/Add';
 import Button from "@mui/material/Button";
 import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
-
+import Forms from "../components/forms/Forms.jsx"
+import { useState } from "react";
+import { formTriggers} from "../components/forms/Forms";
+import Navbar from "../components/Navbar"
 
 let  Main = (props) => {
 
-    const theme = createTheme();    // will give us the default theme object. 
-    console.log(theme);
+    let [ formProps , setFormProps] = useState();
+    let { editAuthorProfile , deleteCard , addCard , editCard } = formTriggers;     // destructuring all the available triggers.
+    let resetFormProps = () => {
+        setFormProps( );
+      }
 
     return (
         <> 
+            <Navbar/>
             <CssBaseline />
             <Box sx={{  background: "#e96443" , 
                         background: "-webkit-linear-gradient(to bottom, #904e95, #e96443)",
@@ -43,7 +50,9 @@ let  Main = (props) => {
                                             <Box sx={{ fontWeight : "600"}} >
                                                 <Stack direction="row" size="0.2rem">
                                                     <Typography sx={{ fontSize : "1.3rem" , fontWeight : "600"}}> Atlas Content  </Typography>
-                                                    <ModeEditOutlineOutlinedIcon sx = {{fontSize : "1.2rem" , ml : " 0.5rem" , position : "relative" , top : "6px" , "&:hover" : { cursor : "pointer" , color : "blue"} }} />
+                                                    <ModeEditOutlineOutlinedIcon
+                                                     sx = {{fontSize : "1.2rem" , ml : " 0.5rem" , position : "relative" , top : "6px" , "&:hover" : { cursor : "pointer" , color : "blue"} }}
+                                                     onClick = { () => { editCard( formProps , setFormProps )}} />
                                                 </Stack>
                                                  
                                             </Box> 
@@ -56,7 +65,13 @@ let  Main = (props) => {
                                     </Box>
                                     <Box className="rightContainer" sx={{height : "100%" , flexGrow : "1" , display : "flex"}}>
                                         <Stack direction="row" sx={{ alignSelf : "end" , mb : "1rem"}}>
-                                            <Button variant="contained" startIcon={<AddIcon/>} > New Card </Button>
+                                            <Button 
+                                            variant="contained" 
+                                            startIcon={<AddIcon/>} 
+                                            onClick = { () => { addCard( formProps , setFormProps )}}
+                                            > 
+                                                New Card 
+                                            </Button>
                                         </Stack>
                                     </Box>   
                             </Box> 
@@ -78,6 +93,9 @@ let  Main = (props) => {
                     </Box>
                 </Box>
             </Container>
+
+            { formProps &&  <Forms { ...formProps } setFormProps = {setFormProps} resetFormProps = { resetFormProps} /> }
+            
             </Box>
         </>
 
