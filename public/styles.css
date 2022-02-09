@@ -6,13 +6,17 @@ body{
     overflow-x : hidden;
 }
 
-.ContentCard:hover{
+.contentCard:hover{
     background-color: #ddddf348;
 }
 
 .creatorCard:hover{
     background-color: #EDF2F7;
 }
+
+
+
+
 
 
 

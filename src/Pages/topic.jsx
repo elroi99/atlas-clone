@@ -11,7 +11,6 @@ import Stack from "@mui/material/Stack";
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import Typography from "@mui/material/Typography";
 import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
 import Button from "@mui/material/Button";
 import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
@@ -21,45 +20,53 @@ import { useState , useEffect , useContext } from "react";
 // import { formTriggers} from "../components/forms/Forms";
 import Navbar from "../components/Navbar";
 import { formsContext } from "../contexts/formsContext"
-import { editAuthorProfile } from "../components/forms/Forms";
+// import { editAuthorProfile } from "../components/forms/Forms";
 import { getDocs , doc , collection , query , where , setDoc , onSnapshot , orderBy , deleteDoc , updateDoc } from "firebase/firestore"
 import { db } from "../firebase/firebase"; 
 // import { createUser } from "./firestoreProductionFunctions";
 import { authContext } from "../contexts/authContext";
 import { useParams } from "react-router-dom";
+import TopicForm from "../components/forms/topicForm";
+import DeleteIcon from '@mui/icons-material/Delete';
 import displayPicPlaceholder from "../assets/displayPicPlaceholder.png"
 
 
-let  Author = (props) => {
+
+let  Topic = (props) => {
+
+// Topic and Tag refer to the same thing. This is a naming goof up of sorts.
 
 // formType options -- cardForm , cardFormEdit , userBioForm , userBioFormEdit , authorBioForm , confirmDelete ,  (choses the form to be displayed within the drawer)
 
-let { authorProfile , deleteCard, addCard, editCard , closeForm , userBioForm , formProps , setFormProps  } = useContext(formsContext)
+let { authorProfile , deleteCard, addCard, editCard , closeForm , userBioForm , formProps , setFormProps , displayTopicForm  } = useContext(formsContext)
 let resetFormProps = () => {        // essentially unmounts the form + resets its form state.
     setFormProps( );
   }
 
-let [ cards , setCards] = useState([]);
-let [ authorBioDetails , setAuthorBioDetails ] = useState({ name : "" , bio : "" , avatar : "" , website : "" , twitter : "" , background : "" })
+let [ cards , setCards] = useState([]); 
+let [ currentTopic , setCurrentTopic ] = useState({ name : "" , bio : "" , background : ""  });
 let { uid : userUid } = useContext(authContext);
-let { authorUid } = useParams();   // to catch the url param.
-console.log(`viewing cards of author with uid ${authorUid}`);
-
-// getting only the bio details of the author ( not the cards of this order) ( for the page header)
-useEffect( async () => {
-// do we need to change where this data is being stored ??? ie. another state.
-    let authorData = (await getDocs( query(collection( db , "users" , userUid , "authorPool" ) , where( "uid" , "==" , authorUid )) )).docs[0].data();     // // change this. // the second uid in the where from a string to a variable 
-    let { name , bio , avatar , website , twitter , background , uid } = authorData;
-    setAuthorBioDetails({ name , bio , avatar , website , twitter , background, uid  });
-} , [])
+let { topicUid } = useParams();   // to catch the url param.
+console.log(`viewing cards of Topic page with uid ${topicUid}`);
 
   useEffect( () => {
+
+    // get the topic details
+    (async() => {
+        let currentTopic = ( await getDocs( query( collection( db , "users" , userUid , "tagPool") , where("uid" , "==" , topicUid) ) ) ).docs[0].data();
+        console.log(currentTopic);
+
+        setCurrentTopic(currentTopic);
+    })();
+    
     console.log("inside the useEffect, check the cards array out");
     console.log(cards);
     console.log("still inside the useEffect, check the uid out");
     console.log(userUid);
-    console.log("Author uid")
-    console.log(authorUid); 
+    console.log("Topic / Tag uid");
+    console.log(topicUid);
+
+    console.log("Topic wont work for some time. change the query for it to work ( change the string to a variable ) ")
 
     // change this query --> this is a single author page. it displays all the cards of a PARTICULAR author
     // this query is slightly more complex cause we need to check if a author is included in the tagsArr of a card.
@@ -72,20 +79,20 @@ useEffect( async () => {
                     return documentSnapshot.data();
                 })
                 // cards now contains an arr of Card objects ( directly from Firebase)
-                console.log("in the Author component, pulled the cards from Firebase (all cards) , we will filter then locally")
+                console.log("in the Topic component, pulled the cards from Firebase (all cards) , we will filter then locally")
                 console.log("unfiltered cards below")
                 console.log(cards);
                 // declaring and using it here immediately
-                function getCardsOfAuthor( cardsArr , authorUid ){
-                    // returns an array of cardObjects. ie. ones that have the author listed in its authorArr
-                    console.log(" cardsArr and authorUid passed to getCardsOfAuthor method")
+                function getCardsOfTopic( cardsArr , topicUid ){
+                    // returns an array of cardObjects. ie. ones that have this particluar tag listed in its tagsrArr
+                    console.log(" cardsArr and topicUid passed to getCardsOfTopic method")
                     console.log(cardsArr);
                     let filtered = cardsArr.filter( ( cardObj ) => {
                         // cardsArr expects a boolean
                         let includeCard = false;    // assuming that the card does not include the current author
                         
-                        for( let authorObj of cardObj.authorsArr ){
-                            if(authorObj.uid === authorUid){
+                        for( let topicObj of cardObj.tagsArr ){
+                            if(topicObj.uid === topicUid){
                                 includeCard = true;
                                 break;
                             }
@@ -97,8 +104,8 @@ useEffect( async () => {
                     return filtered;
                 }
 
-                cards = getCardsOfAuthor(cards , authorUid)    // TODO -- turn 
-                console.log("cards that belong to this author")
+                cards = getCardsOfTopic(cards , topicUid)   
+                console.log("cards that belong to this topic / tag")
                 console.log(cards);
 
                 // set the card arr to state. 
@@ -109,22 +116,19 @@ useEffect( async () => {
         console.log("unsubscribing from realtime card updates before unmouting");
         unsubscribe();
     })
-} , [authorUid])
+} , [topicUid])
 
-// checking the correct cards arr has been found.
-useEffect( () => {
-    console.log(cards);
-} , [ cards ] )
 
-// should delete the current author that is in firebase. + remove the author from all the cards that contained the author.
-function deleteAuthor(){
+// delete the topic from tagPool and remove it from all the cards that have it.
+function deleteTopic(){
     (async () => {
         try{
             // 1. remove the tag from the tagPool
-            let xquery = query( collection( db , "users" , userUid , "authorPool") , where("uid" , "==" , authorUid) ) 
+            let xquery = query( collection( db , "users" , userUid , "tagPool") , where("uid" , "==" , topicUid) ) 
             let targetDocRef = (await getDocs( xquery )).docs[0].ref;
             await deleteDoc(targetDocRef);
-            console.log(`${authorUid} author deleted successfully from authorPool`);
+            console.log(`${topicUid} topic deleted successfully from tagPool`);
+    
 
             // 2. remove the topic ( tag ) from every card that had the tag in it -- ( all the cards in the cards State )
             
@@ -132,13 +136,12 @@ function deleteAuthor(){
             // processedCards is the arr of cards after the current Tag is removed from their tagsArr.
             let processedCards = cards.map((cardObj) => {
                 // removes the curr page card obj from the list of card objects of a particular ar
-                    let filteredAuthors = cardObj.authorsArr.filter((authorObj) => {
-                        return authorObj.uid != authorBioDetails.uid;
+                    let filteredTags = cardObj.tagsArr.filter((tagObj) => {
+                        return tagObj.uid != currentTopic.uid;
                     })
                 // replacing the old tagsArr with the filteredTagsArr ie. the deleted tags are excluded in this new arr
-                cardObj.authorsArr = filteredAuthors;   
-                if(cardObj.authorsArr.length === 0){ cardObj.inQueue = true }  // checking if the card , once modified , should be in the queue
-
+                cardObj.tagsArr = filteredTags; 
+                if(cardObj.tagsArr.length === 0){ cardObj.inQueue = true }  // checking if the card , once modified , should be in the queue
                 return cardObj;
             })
 
@@ -157,7 +160,7 @@ function deleteAuthor(){
                         let currentCardRef = querySnapshot.docs[0].ref;
                         // passing a subset of obj to the updateDoc for efficiency sake. 
                         // If the partial object does not update the object in firestore properly, give it the full object
-                        updateDoc( currentCardRef , { authorsArr : processedCard.authorsArr , inQueue : processedCard.inQueue  }  )
+                        updateDoc( currentCardRef , { tagsArr : processedCard.tagsArr , inQueue : processedCard.inQueue  }  )
                     })
                 })
              ).then(() => {
@@ -170,10 +173,15 @@ function deleteAuthor(){
         }
         catch(error){
             console.log(error);
-            console.log(`Error while trying to delete author with uid ${authorUid}`)
+            console.log(`Error while trying to delete topic with uid ${topicUid}`)
         }
     })();
 }
+
+// checking the correct cards arr has been found.
+useEffect( () => {
+    console.log(cards);
+} , [ cards ] )
 
     return (
         <> 
@@ -190,7 +198,7 @@ function deleteAuthor(){
                                 <Box className="bannerImageContainer" sx={{ height: "200px",  width : "100%" , backgroundColor : "white", overflow : "hidden" }}>
                                         {/* img is not a MUI component. it is a HTML element. We use inline style prop on it instead of the sx prop  */}
                                         <img 
-                                            src ={ authorBioDetails.background }
+                                            src ={ currentTopic.background }
                                             style={{ 
                                                 minHeight : "auto" , 
                                                 width: "100%",
@@ -201,40 +209,16 @@ function deleteAuthor(){
                                         /> 
 
                                 </Box > 
-                                <Box   sx={{ display:"flex", flexDirection:"row"  , height:"100px"}} >
-                                        <Box className="displayPicContainer" sx={{height : "100%", flex : "0 0 200px", maxWidth : "200px" }}> 
-                                            <Box 
-                                                sx={{ 
-                                                height : "145px" , 
-                                                width : "145px" , 
-                                                backgroundColor : "#ddddf34" , 
-                                                borderRadius : "50%" , 
-                                                position : "relative" , 
-                                                left : "10%" , 
-                                                bottom : "50%" , 
-                                                boxShadow : "1" ,
-                                                border : "2px solid white",
-                                                // borderColor : "white" , 
-                                                overflow : "hidden" }}
-                                            >
-                                                <img 
-                                                    // src={ displayPicPlaceholder }
-                                                    src={ authorBioDetails.avatar ? authorBioDetails.avatar : displayPicPlaceholder }
-                                                    // src={ authorBioDetails.avatar  && authorBioDetails.avatar} 
-                                                    style={{ height : "100%" , width: "100%", objectFit : "cover" }} 
-                                                /> 
+                                <Box   sx={{ display:"flex", flexDirection:"row"  , height:"100px"}} >  
 
-                                                {/* try using MUI avatar component instead of the stock html img component  */}
-                                            </Box> 
-                                        </Box>  
                                         <Box className="middleContainer" sx={{height : "100%" , flexGrow : "2" , display : "flex"}}> 
                                             <Box sx={{ alignSelf : "end" , mb: "1rem"  }}>
                                                 <Box sx={{ fontWeight : "600"}} >
                                                     <Stack direction="row" size="0.2rem">
-                                                        <Typography sx={{ fontSize : "1.3rem" , fontWeight : "600"}}> { authorBioDetails.name }  </Typography>
+                                                        <Typography sx={{ fontSize : "1.3rem" , fontWeight : "600"}}> { currentTopic.name }  </Typography>
                                                         <ModeEditOutlineOutlinedIcon
                                                         sx = {{fontSize : "1.2rem" , ml : " 0.5rem" , position : "relative" , top : "6px" , "&:hover" : { cursor : "pointer" , color : "blue"} }}
-                                                        onClick = { () => { authorProfile(authorUid) } } 
+                                                        onClick = { () => { displayTopicForm(topicUid) } } 
                                                         />
                                                     </Stack>
                                                     
@@ -261,8 +245,9 @@ function deleteAuthor(){
                                                 variant="outlined"
                                                 color="error"
                                                 startIcon={<DeleteIcon />}
-                                                onClick={ deleteAuthor }>
-                                                    Delete Author
+                                                onClick={ deleteTopic }>
+
+                                                    Delete Topic
                                                 </Button>
 
                                             </Stack>
@@ -271,9 +256,11 @@ function deleteAuthor(){
 
                         </Box>  
 
+
                         <Grid item container xs={12} columnSpacing="2" className="secondGrid" sx={{position : "sticky", top : 0}} >
-                                <Right formProps={formProps} setFormProps={setFormProps} cardType={"details"} cardDataArr ={ cards } parentPage="author" />
+                                <Right formProps={formProps} setFormProps={setFormProps} cardType={"details"} cardDataArr ={ cards } parentPage="topic" />
                         </Grid> 
+
 
                     </Box>
                 </Box>
@@ -289,6 +276,6 @@ function deleteAuthor(){
     );
 }
  
-export default Author;
+export default Topic;
 
 

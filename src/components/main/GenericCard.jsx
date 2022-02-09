@@ -16,22 +16,22 @@ import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import Forms from "../forms/Forms.jsx"
 import { useState } from "react";
-import { formTriggers } from "../forms/Forms.jsx"
+import { formsContext } from "../../contexts/formsContext";
+import { authContext } from "../../contexts/authContext";
+import { useContext } from "react"
+import { useHistory } from "react-router-dom";
  
-
 // The generic card has 2 modes. "details" card and "queue" card . they can be toggled by changing the cardType prop. by default, the card will be configured as a queue card ie. this variant has a "Process" button. no need to pass any prop to use this card 
 // If however, you want a details card. ie. small variation. ie. Process btn is replaced with 2 buttons. 1. edit 2. delete. if you want this, pass in the cardType prop with value "details". while using the card. 
 
-
-const GenericCard = (props) => {
-
-    let { cardType = "queue" }  = props;    // destructuring the props and assigning a key a default value. 
+const GenericCard = ({ cardType = "details" , cardData }) => {
+    console.log("Inside generic card")
+    console.log(cardData);
+    let { formProps , addCard , showConfirmDelete , editCard , closeForm  } = useContext(formsContext)
+    let { uid : userUid } = useContext(authContext);
+    let history = useHistory();
+    let cardUid = cardData.uid;
     
-    let [ formProps , setFormProps] = useState();
-    let { editAuthorProfile , deleteCard , addCard , editCard } = formTriggers;     // destructuring all the available triggers.
-    let resetFormProps = () => {
-        setFormProps( );
-      }
 
     const styles = {
         // first way of writing styles ie. create a set of k-v pairs in an object , then use them in 
@@ -44,8 +44,9 @@ const GenericCard = (props) => {
             mb : 1.5 
         },
         "cardTitleContainer" : {
-            ustifyContent : "space-between" ,
-            wrap : "nowrap" },
+            justifyContent : "space-between" ,
+            wrap : "nowrap" 
+        },
         "cardTitle" : { 
             fontSize : " 1.07rem" , 
             overflow : "hidden" , 
@@ -90,7 +91,7 @@ const GenericCard = (props) => {
             display : "inline" , 
             pl : 0.5 , 
             fontSize : "0.8rem" , 
-            noWrap:"false"
+            wrap:"nowrap"
         },
     }
 
@@ -98,17 +99,18 @@ const GenericCard = (props) => {
     return(
         <>             
             <Card variant="outlined" className = "contentCard" sx={ styles.contentCard }>
-             
+    
                 <Grid container className="cardTitleContainer" direction="row"  sx={ styles.cardTitleContainer }> 
                     <Grid item container className="postChipAndTitle"  xs={11}  direction="row" wrap="nowrap" columnSpacing={1} > 
                         <Grid item><Chip size="small"  icon={<LibraryBooksIcon />} label="Post" /> </Grid>
-                        <Grid item> <Typography className="cardTitle" noWrap="false" sx={ styles.cardTitle }> 21 Awesome Takeaways from Atomic 21 Awesome Takeaways from Atomic 21 </Typography></Grid>
+                        <Grid item> <Typography className="cardTitle" wrap="nowrap" sx={ styles.cardTitle }> { cardData.name } </Typography></Grid>
                     </Grid>
                     <Grid item className="expandArrow"  xs={1} sx={styles.expandArrow} >
                          <IconButton 
                          className="expandArrowIconButton" 
                          sx={{  "&:hover" : { color : "blue"}}}
-                         onClick = { " "}> 
+                        //  onClick = {}
+                         > 
                             <KeyboardArrowDownIcon/> 
                          </IconButton> 
                     </Grid>
@@ -116,7 +118,7 @@ const GenericCard = (props) => {
 
                 <Box className = "previewContainer" > 
                     <Typography className="previewContent"  sx={styles.previewContent}  >
-                    Today, people have to work too hard to find what they want online, sifting through and steering clear of content, clutter and click-bait not worthy of their time. Over time, navigation on the internet has become increasingly centralized and optimized for clicks and scrolling, not for getting people to where they want to go or what they are looking for quickly. 
+                        { cardData.title}
                     </Typography> 
                 </Box>
 
@@ -128,38 +130,54 @@ const GenericCard = (props) => {
                         </Box>
                         {/* <Box > */}
                         <Box display="flex" flexDirection="row" flexWrap="wrap" gap={1}>
-                            <Chip size="small" label="business" className="tagChip" sx={{boxShadow : 1 , "&:hover" : {textDecoration : "underline" , cursor : "pointer"}  }} ></Chip>
-                            <Chip size="small" label="cars" sx={{boxShadow : 1 , "&:hover" : {textDecoration : "underline" , cursor : "pointer"}}} ></Chip>
-                            <Chip size="small" label="startup" sx={{boxShadow : 1 , "&:hover" : {textDecoration : "underline" , cursor : "pointer"}}} ></Chip>
+                            { 
+                                cardData.tagsArr.map( (tagObj) => {
+                                    let topicUid = tagObj.uid;
+                                    return ( <Chip size="small" label={tagObj.name} className="tagChip" sx={{boxShadow : 1 , "&:hover" : {textDecoration : "underline" , cursor : "pointer"}  }} onClick={ () => { history.push(`/topic/${topicUid}`)}}> </Chip> )
+                                })
+                            }
                         </Box>
                         {/* </Box> */}
                     </Box>
                     <Box classname="ProcessBtnContainer" display="flex" gap={1} flex="0 0 max-content">
-                        <Typography display="inline" sx={{ fontSize:"0.8rem" , paddingRight : "1rem"}} >  2 months ago</Typography> 
+                        
+                        {/* commenting this out till I get a handle on date and time */}
+                        {/* <Typography display="inline" sx={{ fontSize:"0.8rem" , paddingRight : "1rem"}} >  2 months ago </Typography>  */}
                         
                         { cardType === "details" ?
                             (<Box display="flex" gap={1} flex="0 0 max-content"> 
                                 <ModeEditOutlinedIcon 
                                 sx={{ fontSize:"1rem", position : "relative" , top : "3px" , "&:hover": {  cursor : "pointer" , color : "blue" } }}
-                                onClick = { () => { editCard( formProps , setFormProps ) } } /> 
+                                onClick = { () => { editCard(cardData.uid) }  }
+                                 /> 
                                 <DeleteForeverOutlinedIcon 
                                 sx={{ fontSize:"1rem" , position : "relative" , top : "3px",  "&:hover": {  cursor : "pointer" , color : "blue"}} }
-                                onClick = { () => { deleteCard( formProps , setFormProps) } } />
+                                onClick = { () => { 
+                                    console.log("delete icon was clicked in the generic card")
+                                    showConfirmDelete(cardUid) }  }
+                                 />
                             </Box>) 
                                 : 
-                            <Button 
-                            variant="outlined"  sx ={{ ml : 1 , padding : 2 , color : "black" , maxWidth : "300px" }} 
-                            onClick = { () => {addCard( formProps , setFormProps ) } }> 
-                                Process 
-                            </Button>
+                            <Box display="flex" gap={1} flex="0 0 max-content"> 
+                                <Button 
+                                variant="outlined"  sx ={{ ml : 1 , padding : 2 , color : "black" , maxWidth : "300px" , height : "20px" }} 
+                                onClick = { () => { editCard(cardData.uid)  } }
+                                > 
+                                    Process 
+                                </Button>
+
+                                <DeleteForeverOutlinedIcon 
+                                sx={{ fontSize:"1rem" , position : "relative" , top : "3px",  "&:hover": {  cursor : "pointer" , color : "blue"}} }
+                                onClick = { () => { showConfirmDelete(cardUid) }  }
+                                 />
+                            </Box>
                         }
 
                     </Box>
                 </Box>
-
+                
             </Card>  
 
-            { formProps &&  <Forms { ...formProps } setFormProps = {setFormProps} resetFormProps = { resetFormProps} /> }
         </> 
     );
 }

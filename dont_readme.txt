@@ -1,0 +1,2 @@
+ This was also my first time dealing with Dates in js. I have played around with them in a folder named learning dates. 
+ run the dates file in node. ie. shut the react dev ( or dont), run the file separately using node through a second command prompt

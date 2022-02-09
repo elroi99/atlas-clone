@@ -9,7 +9,10 @@ import Button from '@mui/material/Button';
 import UserBioForm from "./userBioForm";
 import ConfirmDelete from "./confirmDelete";
 import AuthorBioForm from "./authorBioForm";
-import { createContext } from "react";
+import { useContext } from "react";
+import { formsContext } from "../../contexts/formsContext";
+import  CardDeleteAcknowlegement  from "../forms/cardDeleteAcknowlegement";
+import TopicForm from "../forms/topicForm";
 
 // think of this component as a wrapper component. ie. it has multiple forms in it. when we want to use a form inside another page, 
 // we embed this Form component in it. We use props to tell Form to display the forms that we want ( Form component has multiple forms in it )
@@ -23,60 +26,20 @@ import { createContext } from "react";
 
 // options - cardForm , cardFormEdit , userBioForm  , authorBioForm , authorBioFormEdit , confirmDelete 
 
-// triggers 
-let editAuthorProfile = (formProps , setFormProps) => {
-  console.log("Trigger pressed")
-  setFormProps( { ...formProps , formType : "authorBioForm"} )
-}
+const Forms = () => {
+  
+  let { formProps , closeForm , editCardUid } = useContext(formsContext);
+  const [isOpen, setOpen] = useState(true);  // change this to false // handles the drawer. ie internal to the form component. 
 
-let deleteCard = (formProps , setFormProps) => {
-  setFormProps({ ...formProps , formType : "confirmDelete"})
-}
-
-let addCard = (formProps , setFormProps) => {
-  setFormProps({ ...formProps , formType : "cardForm"})
-}
-
-let editCard = (formProps , setFormProps) => {
-  setFormProps( { ...formProps , formType : "cardFormEdit"})
-}
-
-export const formTriggers = { editAuthorProfile , deleteCard , addCard , editCard };  // list of form triggers
-
-const Forms = ({formType = "" , resetFormProps  }) => {
-
-  const [isOpen, setOpen] = useState(false);  // change this to false
-  const [ currentForm , setForm] = useState();
-
-  const handleDrawerOpen = () => {
-    console.log("opening drawer")
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    console.log("closing drawer")
-    setOpen(false);
-    resetFormProps();
-  };
-
-
-  // this useEffect essentially changes the state based on the props that the component receives. 
+// this useOpen only opens and closes the drawer. you can handle the drawer in any way. understand the fundamentals. 
   useEffect( () => {
-    console.log(" Forms useEffect is running !! ")
-
-    // if open boolean prop is part of props, open the drawer
-    if(formType === "confirmDelete"){
-      // confirm delete displays outside the drawer, thus, there is no need to open the drawer, unlike in the else statement. 
-      setForm(formType);
+    if(formProps.formType === undefined){
+      setOpen(false);
     }
     else{
-      console.log("opening the drawer and setting the form")
-      setOpen(true);
-      setForm(formType);
+      setOpen(true)
     }
-  
-  } , [])
-
+  } , [ formProps ])
 
   return( 
   <>
@@ -84,9 +47,8 @@ const Forms = ({formType = "" , resetFormProps  }) => {
 
         <Drawer
           anchor="right"
-          open={isOpen}
+          open={ isOpen }
           sx={{ width : "300px", height : "400px" , 
-          // backgroundColor : "black"
         }}
         >
           <Paper sx={{ height : "100vh" }}> 
@@ -94,17 +56,21 @@ const Forms = ({formType = "" , resetFormProps  }) => {
           {/* Drawer will be closed by default. When the user selects a form by clicking on 
           either button, the drawer will open and the correct form will be displayed ------ conditional rendering ofc*/}
 
-          { currentForm === "cardForm" && <CardForm handleDrawerClose = { handleDrawerClose } mode="addCard" />  }
-          { currentForm === "cardFormEdit" && <CardForm handleDrawerClose = { handleDrawerClose } mode="editCard" />  }
-          { currentForm === "userBioForm" && <UserBioForm handleDrawerClose = { handleDrawerClose } />  }
-          { currentForm === "userBioFormEdit" && <UserBioForm handleDrawerClose = { handleDrawerClose } mode="edit"/>  }
-          { currentForm === "authorBioForm" && <AuthorBioForm handleDrawerClose = { handleDrawerClose }/>  }
+            { formProps.formType === "cardForm" && <CardForm  />  }
+            { formProps.formType  === "cardFormEdit" && <CardForm  
+            // mode={{ mode : "edit"}} editCardUid = { editCardUid } // is this overriding the props that we get from context ??
+            />  }
+            { formProps.formType  === "userBioForm" && <UserBioForm />  }
+            { formProps.formType  === "authorBioForm" && <AuthorBioForm  />  }
+            { formProps.formType  === "topicForm" && <TopicForm/>  }
         
           </Paper>
         </Drawer>
         
 
-        { currentForm === "confirmDelete" && <ConfirmDelete/> } 
+        { formProps.formType === "confirmDelete" && <ConfirmDelete /> }
+
+        <CardDeleteAcknowlegement/>
 
 
     </Box> 
