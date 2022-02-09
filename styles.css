@@ -1,0 +1,22 @@
+body{
+    margin : 0px;
+    padding : 0px;
+    position: relative;
+    top: 56px;
+    overflow-x : hidden;
+}
+
+.contentCard:hover{
+    background-color: #ddddf348;
+}
+
+.creatorCard:hover{
+    background-color: #EDF2F7;
+}
+
+
+
+
+
+
+

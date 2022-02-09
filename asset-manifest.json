@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/atlas-clone/static/js/main.17485e6f.chunk.js",
+    "main.js.map": "/atlas-clone/static/js/main.17485e6f.chunk.js.map",
+    "runtime-main.js": "/atlas-clone/static/js/runtime-main.4edf4131.js",
+    "runtime-main.js.map": "/atlas-clone/static/js/runtime-main.4edf4131.js.map",
+    "static/js/2.cf61773e.chunk.js": "/atlas-clone/static/js/2.cf61773e.chunk.js",
+    "static/js/2.cf61773e.chunk.js.map": "/atlas-clone/static/js/2.cf61773e.chunk.js.map",
+    "index.html": "/atlas-clone/index.html",
+    "static/js/2.cf61773e.chunk.js.LICENSE.txt": "/atlas-clone/static/js/2.cf61773e.chunk.js.LICENSE.txt",
+    "static/media/author-background.49f478dc.jpg": "/atlas-clone/static/media/author-background.49f478dc.jpg",
+    "static/media/displayPicPlaceholder.82fa6c75.png": "/atlas-clone/static/media/displayPicPlaceholder.82fa6c75.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4edf4131.js",
+    "static/js/2.cf61773e.chunk.js",
+    "static/js/main.17485e6f.chunk.js"
+  ]
+}
