@@ -2,9 +2,11 @@
 
 ### Create a Card to save and organize your links
 
-###  Add as much information as you want. Cards without 
+### View all content belonging to a tag by clicking on its link
 
-### View your curated collections according to Topics or Authors 
+### View all content by a author by visiting the authors page
+
+### View all authors by clicking on the Explore Section
 
 
 
