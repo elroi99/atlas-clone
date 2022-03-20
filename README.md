@@ -12,3 +12,9 @@
 
 ### Tech Stack 
 <div align="center" style="margin-right: 1rem"><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/firebase.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/javascript.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/material-ui.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/react.svg"/></div>
+
+<div align="center"><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/firebase.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/javascript.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/material-ui.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/react.svg"/></div>
+
+
+ ![](https://github.com/elroi99/atlas-clone/blob/master/elmo%20gif.gif)
+ <img src="https://github.com/elroi99/atlas-clone/blob/master/elmo%20gif.gif" wiidth="500px" height="500px" />
