@@ -15,4 +15,4 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### Tech Stack 
-<div align="center"><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/firebase.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/javascript.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/material-ui.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/react.svg"/></div>
+<div align="center" style="margin-right: 1rem"><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/firebase.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/javascript.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/material-ui.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/react.svg"/></div>
