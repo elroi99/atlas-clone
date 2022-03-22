@@ -1,3 +1,8 @@
+### Atlas-Clone 
+Atlas lets you collect, organize and summarize knowlege from around the internet
+Note that this project is a clone of [Atlas.fm](https://atlas.fm/tony/)
+
+
 ## Demo.
 
 ### Sign in using your Google Account
