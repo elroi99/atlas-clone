@@ -11,8 +11,8 @@
 # Getting Started
 
 ## Dependencies
-Make sure you have Node.js installed on your machine. 
-We will be using Node.js and NPM to run the project.
+Node.JS -- Make sure you have Node.js installed on your machine. 
+NPM ( Node Package Manager ) -- We will be using Node.js and NPM to run the project.
 
 ## Getting Started
 1. Get a copy of the project on your local machine by running the following command
@@ -20,7 +20,7 @@ We will be using Node.js and NPM to run the project.
  2. Enter the project directory 
 	 `cd atlas-clone`
  3. install dependencies 
-	 `npm istall`
+	 `npm install`
  4. Run the project 
 	 `npm start`
 	 
