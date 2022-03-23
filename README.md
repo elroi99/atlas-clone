@@ -4,6 +4,7 @@ Atlas lets you collect, organize and summarize knowlege from around the internet
 #### Note that this project is a clone of [Atlas.fm](https://atlas.fm/tony/). Visit them and give them some love 
 
 # Demo Video.
+
 https://user-images.githubusercontent.com/61104879/159657502-8f9b845e-736e-4d1c-92d5-2c914105d6c7.mp4
 
 
@@ -26,13 +27,37 @@ https://user-images.githubusercontent.com/61104879/159657502-8f9b845e-736e-4d1c-
 <img width="953" alt="author page" src="https://user-images.githubusercontent.com/61104879/159663259-7b30b091-b430-433d-97c8-3ec4937b55f4.PNG">
 
 # Technical Overview
-## Technologies used 
-- HTML
+## Technologies and Tools used.
+<!-- - HTML
 - CSS
 - Javascript
 - React JS
-- Firebase 
+- Firebase   
+ -->
+ 
+ <img align="left" alt="Visual Studio Code" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />
+<img align="left" alt="HTML5" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
+<img align="left" alt="CSS3" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" />
+<img align="left" alt="JavaScript" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" />
+<img align="left" alt="React" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" />
+<img align="left" alt="Firebase" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/firebase/firebase.png" />
+<img align="left" alt="Git" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png" />
+<img align="left" alt="GitHub" width="40px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
+<img align="left" alt="Terminal" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png" />  
 
+<br/> 
+<br/>
+
+- HTML
+- CSS
+- Javascript
+- React JS 
+- Firebase
+- Git 
+- VSCode 
+- Terminal
+
+<br/>
 
 # Running the code on your local machine
 
@@ -50,21 +75,31 @@ https://user-images.githubusercontent.com/61104879/159657502-8f9b845e-736e-4d1c-
  4. Run the project 
 	 `npm start`
 	 
-Give it some time ...... Breathe in .. Breathe out. 
-Node should start a development server on your local machine. 
+Give it some time ...... Breathe in .. Breathe out.  
+Node should start a development server on your local machine.  
 You should be able to view Atlas in your browser at localhost://3000 ( unless you opened it on another port )
 
 #### Thats it 🥳 🥳 !!
 
-
+<!-- Elmo Gif -->
 <br/>
  <img src="https://github.com/elroi99/atlas-clone/blob/master/elmo%20gif.gif" wiidth="300px" height="300px" />
 
 
 
 ## Acknowledgements
-Give credit here.
 - This project is a clone of [Atlas.fm](https://atlas.fm/tony/) ! Visit them and give them some love 
 
- ![](https://github.com/elroi99/atlas-clone/blob/master/elmo%20gif.gif)
- <img src="https://github.com/elroi99/atlas-clone/blob/master/elmo%20gif.gif" wiidth="500px" height="500px" />
+<!--  <img align="left" alt="Visual Studio Code" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />
+<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
+<img align="left" alt="CSS3" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" />
+<img align="left" alt="JavaScript" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" />
+<img align="left" alt="React" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" />
+<img align="left" alt="Redux" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/redux/redux.png" />
+<img align="left" alt="Node.js" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png" />
+<img align="left" alt="Express" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/express/express.png" />
+<img align="left" alt="MongoDB" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mongodb/mongodb.png" />
+<img align="left" alt="Firebase" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/firebase/firebase.png" />
+<img align="left" alt="Git" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png" />
+<img align="left" alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
+<img align="left" alt="Terminal" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png" /> -->
