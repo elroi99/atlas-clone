@@ -3,6 +3,9 @@ Atlas lets you collect, organize and summarize knowlege from around the internet
 <br/>
 #### Note that this project is a clone of [Atlas.fm](https://atlas.fm/tony/). Visit them and give them some love 
 
+# Live site
+Visit the live site at [Atlas-Clone](https://admiring-bhaskara-b21400.netlify.app/)
+
 # Demo Video.
 
 https://user-images.githubusercontent.com/61104879/159657502-8f9b845e-736e-4d1c-92d5-2c914105d6c7.mp4
