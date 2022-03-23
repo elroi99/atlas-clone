@@ -9,19 +9,19 @@ https://user-images.githubusercontent.com/61104879/159657502-8f9b845e-736e-4d1c-
 
 
 # Screenshots and Gifs
-#### Home page
+### Home page
 
 <br/>
 <img width="949" alt="atlas home page" src="https://user-images.githubusercontent.com/61104879/159663189-f8d6595a-4c99-454a-9381-604a3985de22.PNG">
 <br/>
 
-#### Explore page
+### Explore page
 
 <br/>
 <img width="952" alt="authors explore page" src="https://user-images.githubusercontent.com/61104879/159663296-da7a8230-8653-4154-8336-4c7f1846b6d1.PNG">
 <br/>
 
-#### Author page
+### Author page
 
 <br/>
 <img width="953" alt="author page" src="https://user-images.githubusercontent.com/61104879/159663259-7b30b091-b430-433d-97c8-3ec4937b55f4.PNG">
