@@ -1,5 +1,6 @@
 # Atlas-Clone 
-Atlas lets you collect, organize and summarize knowlege from around the internet 
+Atlas lets you collect, organize and summarize knowlege from around the internet.  
+You can think of it as a sleek looking bookmark manager.
 <br/>
 #### Note that this project is a clone of [Atlas.fm](https://atlas.fm/tony/). Visit them and give them some love 
 
