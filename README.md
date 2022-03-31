@@ -1,9 +1,8 @@
 # Atlas-Clone 
 Atlas lets you collect, organize and summarize knowlege from around the internet.  
-You can think of it as a sleek looking bookmark manager.
+You can think of it as a sleek bookmark manager.
 <br/>
-# Live site
-Visit the live site at [Atlas-Clone](https://atlas-clone.herokuapp.com/)
+# View Live site --> [Atlas-Clone](https://atlas-clone.herokuapp.com/)
 
 #### Note that this project is a clone of [Atlas.fm](https://atlas.fm/tony/). Visit them and give them some love 
 
