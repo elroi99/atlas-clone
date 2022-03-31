@@ -86,6 +86,47 @@ You should be able to view Atlas in your browser at localhost://3000 ( unless yo
 
 #### Thats it 🥳 🥳 !!
 
+
+
+# Running the code on your local machine
+
+## Dependencies
+- Node.JS -- Make sure you have Node.js installed on your machine. 
+- NPM ( Node Package Manager ) -- We will be using Node.js and NPM to run the project.
+- Although not a npm package, We will need create a firebase project.  
+
+
+## Installation Instructions
+
+1. Get a copy of the project on your local machine by running the following command
+	 `git clone https://github.com/elroi99/atlas-clone.git`
+2. Enter the project directory 
+	 `cd atlas-clone`
+3. install dependencies using npm
+	 `npm install`
+4. create your own firebase project to get your own firebase keys 
+5. replace the current firebaseConfig object with the object from your new firebase project.
+	the firebaseConfig obj looks similar to below object and is inside the firebase.js file at src/firebase/
+	```
+	const firebaseConfig = {
+	  apiKey: "AIzaSyee-dd-xxxxxxx,
+	  authDomain: "tiny-house-xxxxx.firebaseapp.com",
+	  projectId: "tiny-house-7xxxx",
+	  storageBucket: "tiny-house-3333s.appspot.com",
+	  messagingSenderId: "434xxx44yyy,
+	  appId: "1:4d4232fdd37o7986"
+	};
+	```
+6. once you have added your own firebaseConfig object, the app is ready to Rock and Roll !!
+7. Run the project 
+	 `npm start`
+	 
+Give it some time ...... Breathe in .. Breathe out.  
+Node should start a development server on your local machine.  
+You should be able to view Atlas in your browser at localhost://3000 ( unless you opened it on another port )
+
+#### Thats it 🥳 🥳 !! 
+
 <!-- Elmo Gif -->
 <br/>
  <img src="https://github.com/elroi99/atlas-clone/blob/master/elmo%20gif.gif" wiidth="300px" height="300px" />
