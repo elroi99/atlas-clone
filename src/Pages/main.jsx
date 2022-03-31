@@ -2,6 +2,7 @@ import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import { Link } from "@mui/material";
 import Grid from "@mui/material/Grid"
 import Paper from "@mui/material/Paper"
 import Right from "../components/main/right.jsx"
@@ -29,6 +30,9 @@ import CardDeleteAcknowlegement from "../components/forms/cardDeleteAcknowlegeme
 import { a } from "../readerView/readerView";   // just for testing. get rid of it once readerView is successfully implemented. 
 import { b } from "../firebase/firestoreProductionFunctions";   // just to get firestoreProductionFunctions to run and its 
 import displayPicPlaceholder from "../assets/displayPicPlaceholder.png"
+import githubLogo from "../assets/githubLogo.png";
+import twitterLogo from "../assets/twitterLogo.png";
+import linkedinLogo from "../assets/linkedinLogo.png";
 
 let  Main = (props) => {    
 
@@ -185,6 +189,29 @@ let  Main = (props) => {
 
             { formProps &&  <Forms { ...formProps } setFormProps = {setFormProps} resetFormProps = { resetFormProps} /> }
             
+
+            <Box sx={{ display : "flex" , flexDirection : "column" , position : "fixed" , bottom : "10px" , left : "1px" ,  borderRadius : "5px" }}>  
+                <Link href="https://github.com/elroi99"> 
+                    <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="github logo" src={ githubLogo } />  
+                </Link>
+                <Link href="https://www.linkedin.com/in/elroinoronha/"> 
+                    <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="linkedin logo" src={ linkedinLogo } />  
+                </Link>
+                <Link href="https://twitter.com/ElroiNoronha"> 
+                      <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="twitter logo" src={ twitterLogo } />  
+              </Link>
+            </Box>
+
+            {/* <Box>
+                <Link href="https://www.linkedin.com/in/elroinoronha/"> 
+                    <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="linkedin logo" src={ linkedinLogo } />  
+                </Link>
+            </Box>
+            <Box> 
+              <Link href="https://twitter.com/ElroiNoronha"> 
+                      <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="twitter logo" src={ twitterLogo } />  
+              </Link>
+            </Box> */}
             
 
             </Box>

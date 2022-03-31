@@ -4,7 +4,15 @@ import { onAuthStateChanged } from "firebase/auth";
 import {useHistory} from "react-router-dom";
 import { collection, addDoc , deleteDoc , doc , setDoc , getDoc , getDocs , query , where , updateDoc , serverTimestamp , onSnapshot } from "firebase/firestore"; 
 import { User } from "../firebase/firestoreProductionFunctions"
+
+
+// creating the context ( the actual meat )
 export const authContext = createContext();
+
+// careful while creating context
+// youve named both, the component and the context item itself authContext
+// the only difference is in the casing ie. authContext vs AuthContext
+// it might be more wise to call the component AuthContextComponent
 
 const AuthContext = (props) => {
 
@@ -34,7 +42,7 @@ const AuthContext = (props) => {
                 console.log(`${displayName} has logged in`);
                 console.log(userDetails);
                 
-                setUser({ displayName , email , uid , photoURL})
+                setUser({ displayName , email , uid , photoURL});
                 routeChange(); 
 
                 // if userDetils arent  already in firestore, add them. 
@@ -62,8 +70,7 @@ const AuthContext = (props) => {
     } , [] )
 
 
-    return (
-            <authContext.Provider value = { user } > 
+    return (<authContext.Provider value = { user } > 
 
                 {/* if not loading, render the children , regardless of whether the user is logged in or not */}
                 {/* if the user is not logged in , the ProtectRoute will automatically redirect the user to the landing page ( which has the login option) */}

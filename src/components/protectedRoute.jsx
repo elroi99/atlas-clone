@@ -11,8 +11,10 @@ const ProtectedRoute = ({ component : Component ,  ...rest }) => {
     return(
         <>
 
-        {
-            <Route {...rest} render={
+        { 
+            <Route 
+            {...rest} 
+            render={
                 (routeProps) => {
                     if(data){
                          return  <Component {...rest} {...routeProps}/>

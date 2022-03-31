@@ -27,7 +27,7 @@ import { db } from "../firebase/firebase";
 // import { createUser } from "./firestoreProductionFunctions";
 import { authContext } from "../contexts/authContext";
 import { useParams } from "react-router-dom";
-import displayPicPlaceholder from "../assets/displayPicPlaceholder.png"
+import displayPicPlaceholder from "../assets/displayPicPlaceholder.png";
 
 
 let  Author = (props) => {

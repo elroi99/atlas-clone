@@ -3,9 +3,12 @@ import { getAuth, onAuthStateChanged , signOut }  from "firebase/auth";
 import { authContext} from "../contexts/authContext";
 import { useContext , useEffect } from "react";
 import { useHistory } from "react-router-dom"
-import { Typography , Button , Box } from '@mui/material';
+import { Typography , Button , Box , Link ,  } from '@mui/material';
 import { db } from "../firebase/firebase";
 import SvgIcon from '@mui/material/SvgIcon';
+import linkedinLogo from "../assets/linkedinLogo.png";
+import twitterLogo from "../assets/twitterLogo.png";
+import githubLogo from "../assets/githubLogo.png"
 import Container from '@mui/material/Container';
 
 
@@ -107,51 +110,22 @@ const Landing = () => {
           </Box> 
         
         {/* black section */}
-        <Box sx={{ display : "flex" , flexDirection : "column" ,  justifyContent : "center" , backgroundColor : "#1D1D1F" , mt : 10  }}>
+         <Box sx={{ display : "flex" , flexDirection : "column" ,  justifyContent : "center" , backgroundColor : "#1D1D1F" , mt : 10 , pb : 10  }}>
           
           {/* black section header ("How it works") */}
-          <Typography sx={{ textAlign : "center" , fontSize : "2.7rem" , color : "#d6d0d0" , mt : "1.5rem" }}> How it works  </Typography>
+          <Typography sx={{ textAlign : "center" , fontSize : "1.7rem" , color : "#d6d0d0" , mt : "1.5rem" , pb : "0.5rem" }}> Atlas Video Demo  </Typography>
 
-          {/* first section within black section */}
-          <Box sx={{  display : "grid" , gridTemplateColumns : "1fr 1fr" , mt : "1.5rem" , py : "2rem" , justifyContent : "center" }}> 
-            <Box  sx={{ display : "Flex" , justifyContent : "center"}}>
-                <img src="" width="400px" height="200px" style={{ border : "1px solid white" , }} />
-            </Box> 
-
-            <Box sx={{ maxWidth : "80%"}}>
-              <Typography sx={{fontSize : "2em" , color : "#d6d0d0" }}> Save Content Quickly  </Typography> 
-              <Typography sx={{ color : "#d6d0d0" }}> Simply give Atlas a URL and we will stash it away for you !! Its that simple</Typography>
-            </Box> 
-          </Box>
-
-          {/* second section within the black section */}
-          <Box sx={{  display : "grid" , gridTemplateColumns : "1fr 1fr" , mt : "1.5rem" , py : "2rem"  , justifyContent : "center"  }}> 
-            <Box sx={{ display: "flex" , justifyContent : "center"}}>
-              <Box sx={{ maxWidth : "60%" }}> 
-                <Typography sx={{fontSize : "2em" , color : "#d6d0d0" }}>Organize with ease </Typography> 
-                <Typography sx={{ color : "#d6d0d0" }}> Tag people and topics with a single keystroke. Paste in your highlights and add your own notes.</Typography>
-              </Box>
-            </Box> 
-
-            <Box sx={{ display : "flex" , justifyContent : "center" }}>
-              <img src="" width="400px" height="200px" style={{ border : "1px solid white" , }} />
-            </Box> 
-          </Box>
-
-          {/* third section within the black section */}
-          <Box sx={{  display : "grid" , gridTemplateColumns : "1fr 1fr" , mt : "1.5rem" , py : "2rem" , justifyContent : "center" }}> 
-            <Box  sx={{ display : "Flex" , justifyContent : "center"}}>
-                <img src="" width="400px" height="200px" style={{ border : "1px solid white" , }} />
-            </Box> 
-
-            <Box sx={{ maxWidth : "80%"}}>
-              <Typography sx={{fontSize : "2em" , color : "#d6d0d0" }}> Never Lose a Link  </Typography> 
-              <Typography sx={{ color : "#d6d0d0" }}> A single click sends an item to your backlog. Read it and tag it when you're ready</Typography>
-            </Box> 
-          </Box>
-
+          {/* video section */}
+          <iframe height="560px" width="auto" src="https://www.youtube.com/embed/HTycd5yz__o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/HTycd5yz__o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>     */}
         </Box> 
+  
          {/* black section end */}
+
+
+        {/* video section */}
+        
+
 
     
           {/* <Box sx={ { }}> 
@@ -165,43 +139,45 @@ const Landing = () => {
             </Box> 
           </Box> */}
 
-          {/* bottom call to action */}
-          <Box sx={{ mt : 10 }}>
-            <Typography sx={{ textAlign : "center" , fontSize : "2.7rem" , color : "#333333" , fontWeight : "500"}}> Start building your second brain  </Typography>
+            {/* bottom call to action */}
+            <Box sx={{ mt : 10 }}>
+              <Typography sx={{ textAlign : "center" , fontSize : "2.7rem" , color : "#333333" , fontWeight : "500"}}>
+                 This app was cloned from <Link href="https://atlas.fm/tony/" sx={{ fontStyle : "italic"  }}> Atlas.fm </Link>   
+              </Typography>
             <Box sx={{ display : "flex" , justifyContent : "center" , mt : 3}}> 
-              <Button 
-              onClick={ () => { signInWithFirebase() } }
-              variant="contained"
-              sx={{                   
-                height : "3rem" , 
-                width : "20rem" , 
-                fontSize : "2rem",
-                backgroundColor : "black" ,
-                ":hover" : {
-                  backgroundColor : "#4F56EF"
-                }
-                
-              }}>
-                Get Started !! 
-              </Button> 
+
+
+
             </Box>
           </Box> 
           
 
           {/* Footer */}
-          <Box sx={{ backgroundColor : "#1D1D1F" , height : "75px" , mt : "2rem"}}> 
-              <Typography sx={{ color : "white" }}> </Typography> 
-          </Box>
+          <Box sx={{ display : "flex" , alignItems : "center" , height : "75px" , mt : "5rem" , borderTop : "4px solid #1D1D1F" }}>
+            <Typography variant="h5" sx={{ ml : "auto" , mr : "2rem"}}> Made with <span> ❤️ </span> by Elroi Noronha</Typography> 
+            <Box>
+                <Link href="https://github.com/elroi99"> 
+                    <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="github logo" src={ githubLogo } />  
+                </Link>
+            </Box>
+            <Box>
+                <Link href="https://www.linkedin.com/in/elroinoronha/"> 
+                    <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="linkedin logo" src={ linkedinLogo } />  
+                </Link>
+            </Box>
+            <Box> 
+              <Link href="https://twitter.com/ElroiNoronha"> 
+                      <img style={{ width : "35px" , height : "auto" , marginLeft : "1rem" }} alt="twitter logo" src={ twitterLogo } />  
+              </Link>
+            </Box>
+        </Box>
         
           </Container>
           </Box> 
         </>   
         
         );
-      
 
-
-      
 }
  
 export default Landing;

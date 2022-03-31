@@ -1,13 +1,23 @@
 import { Google } from "@mui/icons-material";
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider ,signInWithPopup,  onAuthStateChanged, signOut } from "firebase/auth"
-import { firebaseConfig }  from "../secrets/firebaseConfig";
+// import { firebaseConfig }  from "../secrets/firebaseConfig";
 import { getFirestore , collection, addDoc , deleteDoc , doc , setDoc , getDoc , getDocs , query , where , updateDoc , serverTimestamp , onSnapshot  } from "firebase/firestore"; 
 import { getStorage } from "firebase/storage";
 import { User } from "./firestoreProductionFunctions";
+import axios from "axios";
 
+// construct the firebaseConfig object using the .env api keys.
+const firebaseConfig = {
+  apiKey: "AIzaSyAJHMXckSDjxsHE9VNBrq-yGwmJvrd7Uq4",
+  authDomain: "atlas-clone-c55e4.firebaseapp.com",
+  projectId: "atlas-clone-c55e4",
+  storageBucket: "atlas-clone-c55e4.appspot.com",
+  messagingSenderId: "847869429007",
+  appId: "1:847869429007:web:e4662680562689e0e4ea7a", 
+}
 
-  // Initialize Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(); // auth object. our portal to the firebase auth service
 export const db = getFirestore();
@@ -50,6 +60,8 @@ export const signout = async () => {
   }
   
 }
+
+
 
 
 
