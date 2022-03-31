@@ -31,6 +31,8 @@ https://user-images.githubusercontent.com/61104879/159657502-8f9b845e-736e-4d1c-
 <br/>
 <img width="953" alt="author page" src="https://user-images.githubusercontent.com/61104879/159663259-7b30b091-b430-433d-97c8-3ec4937b55f4.PNG">
 
+# Check out another one of my projects --> [Tiny House](https://github.com/elroi99/tinyHouse)
+
 # Technical Overview
 ## Technologies and Tools used.
 <!-- - HTML
